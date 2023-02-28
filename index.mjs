@@ -4,7 +4,7 @@ document.body.style.margin = "0";
 document.body.style.overflow = "hidden";
 document.body.style.backgroundColor = colorPalette.one;
 
-function createCanvas() {
+function createCanvas({ identifier }) {
   const canvas = document.createElement("canvas");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -15,8 +15,12 @@ function createCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   });
+
+  if (identifier) {
+    canvas.dataset.identifier = identifier;
+  }
 }
 
-const playerCanvas = createCanvas();
-const bulletsCanvas = createCanvas();
-const enemiesCanvas = createCanvas();
+const playerCanvas = createCanvas({ identifier: "for-player" });
+const bulletsCanvas = createCanvas({ identifier: "for-bullets" });
+const enemiesCanvas = createCanvas({ identifier: "for-enemies" });
