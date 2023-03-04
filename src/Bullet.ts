@@ -16,15 +16,15 @@ export class Bullet {
     this.x = player.x + player.width / 2 - this.width / 2;
     this.y = player.y + player.height / 2 - this.height / 2;
 
-    const target = this.findClosestEnemy(enemies);
+    const target = this.findClosestEnemy(enemies, player);
 
     this.moveTowardsEnemy(target);
   }
 
-  findClosestEnemy(enemies: Enemy[]): Coordinates {
+  findClosestEnemy(enemies: Enemy[], player: Player): Coordinates {
     if (!enemies.length) {
       return {
-        x: getWindowWidth() / 2,
+        x: player.x + player.width / 2,
         y: 0,
       };
     }
