@@ -36,6 +36,30 @@ setInterval(() => {
   bullets.push(bullet);
 }, 1000);
 
+function checkForCollisions() {
+  enemies.forEach((enemy) => {
+    bullets.forEach((bullet) => {
+      if (
+        bullet.x > enemy.x &&
+        bullet.x < enemy.x + enemy.width &&
+        bullet.y > enemy.y &&
+        bullet.y < enemy.y + enemy.height
+      ) {
+        enemy.HP -= 1;
+        bullets.splice(bullets.indexOf(bullet), 1);
+      }
+    });
+  });
+}
+
+function checkForEnemyDeaths() {
+  enemies.forEach((enemy) => {
+    if (enemy.HP <= 0) {
+      enemies.splice(enemies.indexOf(enemy), 1);
+    }
+  });
+}
+
 requestAnimationFrame(function gameLoop() {
   playerCanvas.clear();
   player.draw(playerCanvas.context);
@@ -52,6 +76,9 @@ requestAnimationFrame(function gameLoop() {
     }
     bullet.draw(bulletsCanvas.context);
   });
+
+  checkForCollisions();
+  checkForEnemyDeaths();
 
   requestAnimationFrame(gameLoop);
 });
