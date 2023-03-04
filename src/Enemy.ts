@@ -7,6 +7,7 @@ export class Enemy {
   width: number;
   height: number;
   color = colorPalette.five;
+  HP = 1;
 
   constructor(
     x: number,
@@ -42,5 +43,9 @@ export class Enemy {
   draw(context: CanvasRenderingContext2D) {
     context.fillStyle = this.color;
     context.fillRect(this.x, this.y, this.width, this.height);
+
+    context.fillStyle = "black";
+    context.font = "12px Arial";
+    context.fillText(`HP: ${this.HP.toString()}`, this.x, this.y + 12);
   }
 }
