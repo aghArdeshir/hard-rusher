@@ -1,3 +1,4 @@
+import { Bullet } from "./Bullet";
 import { Canvas } from "./Canvas";
 import { colorPalette } from "./color-palette";
 import { Enemy } from "./Enemy";
@@ -28,6 +29,13 @@ const enemies = [
   new Enemy(100, windowHeight / 2, 50, 50, player),
 ];
 
+const bullets: Bullet[] = [];
+
+setInterval(() => {
+  const bullet = new Bullet(player, enemies);
+  bullets.push(bullet);
+}, 1000);
+
 requestAnimationFrame(function gameLoop() {
   playerCanvas.clear();
   player.draw(playerCanvas.context);
@@ -35,6 +43,11 @@ requestAnimationFrame(function gameLoop() {
   enemiesCanvas.clear();
   enemies.forEach((enemy) => {
     enemy.draw(enemiesCanvas.context);
+  });
+
+  bulletsCanvas.clear();
+  bullets.forEach((bullet) => {
+    bullet.draw(bulletsCanvas.context);
   });
 
   requestAnimationFrame(gameLoop);
