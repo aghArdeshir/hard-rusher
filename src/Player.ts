@@ -43,7 +43,7 @@ export class Player {
     }
 
     if (!this.movingIntervalRef) {
-      this.movingIntervalRef = window.setInterval(this.move, 1);
+      this.movingIntervalRef = window.setInterval(this.move, 5);
     }
   };
 
