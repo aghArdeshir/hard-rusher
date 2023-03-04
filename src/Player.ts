@@ -3,15 +3,17 @@ import { colorPalette } from "./color-palette";
 type DIRECTION = "UP" | "DOWN" | "LEFT" | "RIGHT";
 
 export class Player {
-  x = window.innerWidth / 2;
-  y = window.innerHeight / 2;
+  x;
+  y;
   width = 50;
   height = 50;
   color = colorPalette.four;
   moving: DIRECTION | null = null;
   movingIntervalRef: number | null = null;
 
-  constructor() {
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
     window.addEventListener("keydown", this.handleKeyDown);
     window.addEventListener("keyup", this.handleKeyUp);
   }
@@ -70,5 +72,3 @@ export class Player {
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 }
-
-export const player = new Player();
