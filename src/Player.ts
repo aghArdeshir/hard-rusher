@@ -3,8 +3,8 @@ import { colorPalette } from "./color-palette";
 type DIRECTION = "UP" | "DOWN" | "LEFT" | "RIGHT";
 
 class Player {
-  x = 100;
-  y = 100;
+  x = window.innerWidth / 2;
+  y = window.innerHeight / 2;
   width = 50;
   height = 50;
   color = colorPalette.four;
