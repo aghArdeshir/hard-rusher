@@ -2,7 +2,7 @@ import { colorPalette } from "./color-palette";
 
 type DIRECTION = "UP" | "DOWN" | "LEFT" | "RIGHT";
 
-class Player {
+export class Player {
   x = window.innerWidth / 2;
   y = window.innerHeight / 2;
   width = 50;
