@@ -31,15 +31,15 @@ export class Enemy {
   }
 
   moveTowardsPlayer(player: Player) {
-    if (this.x < player.x) {
+    if (this.x < player.x - player.width) {
       this.x += 1;
-    } else if (this.x > player.x) {
+    } else if (this.x > player.x + player.width) {
       this.x -= 1;
     }
 
-    if (this.y < player.y) {
+    if (this.y < player.y - player.height) {
       this.y += 1;
-    } else if (this.y > player.y) {
+    } else if (this.y > player.y + player.height) {
       this.y -= 1;
     }
   }
