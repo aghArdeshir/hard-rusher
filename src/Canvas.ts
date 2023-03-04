@@ -1,5 +1,3 @@
-import { Drawable } from "./Drawable";
-
 export class Canvas {
   context: CanvasRenderingContext2D;
 
