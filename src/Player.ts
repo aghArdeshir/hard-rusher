@@ -19,6 +19,7 @@ class Player {
   handleKeyUp = (event: KeyboardEvent) => {
     if (this.movingIntervalRef) {
       window.clearInterval(this.movingIntervalRef);
+      this.movingIntervalRef = null;
     }
     this.moving = null;
   };
