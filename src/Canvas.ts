@@ -26,11 +26,6 @@ export class Canvas {
     }
   }
 
-  draw(subject: Drawable) {
-    this.context.fillStyle = subject.color;
-    this.context.fillRect(subject.x, subject.y, subject.width, subject.height);
-  }
-
   clear() {
     this.context.clearRect(0, 0, window.innerWidth, window.innerHeight);
   }

@@ -10,5 +10,8 @@ const playerCanvas = new Canvas({ identifier: "for-player" });
 const bulletsCanvas = new Canvas({ identifier: "for-bullets" });
 const enemiesCanvas = new Canvas({ identifier: "for-enemies" });
 
-playerCanvas.clear();
-playerCanvas.draw(player);
+requestAnimationFrame(function gameLoop() {
+  playerCanvas.clear();
+  player.draw(playerCanvas.context);
+  requestAnimationFrame(gameLoop);
+});
