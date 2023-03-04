@@ -2,6 +2,7 @@ import { Canvas } from "./Canvas";
 import { colorPalette } from "./color-palette";
 import { Enemy } from "./Enemy";
 import { Player } from "./Player";
+import { getWindowHeight, getWindowWidth } from "./window-dimensions";
 
 document.body.style.margin = "0";
 document.body.style.overflow = "hidden";
@@ -11,8 +12,8 @@ const playerCanvas = new Canvas({ identifier: "for-player" });
 const bulletsCanvas = new Canvas({ identifier: "for-bullets" });
 const enemiesCanvas = new Canvas({ identifier: "for-enemies" });
 
-const windowWidth = window.innerWidth;
-const windowHeight = window.innerHeight;
+const windowWidth = getWindowWidth();
+const windowHeight = getWindowHeight();
 
 export const player = new Player(windowWidth / 2, windowHeight / 2);
 
