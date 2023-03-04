@@ -25,11 +25,6 @@ export class Enemy {
     }, 100);
   }
 
-  draw(context: CanvasRenderingContext2D) {
-    context.fillStyle = this.color;
-    context.fillRect(this.x, this.y, this.width, this.height);
-  }
-
   moveTowardsPlayer(player: Player) {
     if (this.x < player.x - player.width) {
       this.x += 1;
@@ -42,5 +37,10 @@ export class Enemy {
     } else if (this.y > player.y + player.height) {
       this.y -= 1;
     }
+  }
+
+  draw(context: CanvasRenderingContext2D) {
+    context.fillStyle = this.color;
+    context.fillRect(this.x, this.y, this.width, this.height);
   }
 }
