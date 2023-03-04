@@ -11,6 +11,7 @@ export class Player {
   moving: DIRECTION | null = null;
   movingIntervalRef: number | null = null;
   health = 100;
+  speed = 1;
 
   constructor(x: number, y: number) {
     this.x = x;
@@ -51,16 +52,16 @@ export class Player {
   move = () => {
     switch (this.moving) {
       case "UP":
-        this.y -= 1;
+        this.y -= this.speed;
         break;
       case "DOWN":
-        this.y += 1;
+        this.y += this.speed;
         break;
       case "LEFT":
-        this.x -= 1;
+        this.x -= this.speed;
         break;
       case "RIGHT":
-        this.x += 1;
+        this.x += this.speed;
         break;
       default:
         window.clearInterval(this.movingIntervalRef || 0);
@@ -75,5 +76,9 @@ export class Player {
     ctx.fillStyle = "black";
     ctx.font = "12px Arial";
     ctx.fillText(`HP: ${this.health}`, this.x, this.y + 12);
+
+    ctx.fillStyle = "black";
+    ctx.font = "12px Arial";
+    ctx.fillText(`Speed: ${this.speed}`, this.x, this.y + 24);
   }
 }
