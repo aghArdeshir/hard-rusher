@@ -1,6 +1,6 @@
-import { colorPalette } from "./color-palette";
+import { colorPalette } from './color-palette';
 
-type DIRECTION = "UP" | "DOWN" | "LEFT" | "RIGHT";
+type DIRECTION = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
 
 export class Player {
   x;
@@ -16,8 +16,8 @@ export class Player {
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
-    window.addEventListener("keydown", this.handleKeyDown);
-    window.addEventListener("keyup", this.handleKeyUp);
+    window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('keyup', this.handleKeyUp);
   }
 
   handleKeyUp = (event: KeyboardEvent) => {
@@ -30,17 +30,17 @@ export class Player {
 
   handleKeyDown = (event: KeyboardEvent) => {
     switch (event.key) {
-      case "ArrowUp":
-        this.moving = "UP";
+      case 'ArrowUp':
+        this.moving = 'UP';
         break;
-      case "ArrowDown":
-        this.moving = "DOWN";
+      case 'ArrowDown':
+        this.moving = 'DOWN';
         break;
-      case "ArrowLeft":
-        this.moving = "LEFT";
+      case 'ArrowLeft':
+        this.moving = 'LEFT';
         break;
-      case "ArrowRight":
-        this.moving = "RIGHT";
+      case 'ArrowRight':
+        this.moving = 'RIGHT';
         break;
     }
 
@@ -51,16 +51,16 @@ export class Player {
 
   move = () => {
     switch (this.moving) {
-      case "UP":
+      case 'UP':
         this.y -= this.speed;
         break;
-      case "DOWN":
+      case 'DOWN':
         this.y += this.speed;
         break;
-      case "LEFT":
+      case 'LEFT':
         this.x -= this.speed;
         break;
-      case "RIGHT":
+      case 'RIGHT':
         this.x += this.speed;
         break;
       default:
@@ -73,12 +73,12 @@ export class Player {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
 
-    ctx.fillStyle = "black";
-    ctx.font = "12px Arial";
+    ctx.fillStyle = 'black';
+    ctx.font = '12px Arial';
     ctx.fillText(`HP: ${this.health}`, this.x, this.y + 12);
 
-    ctx.fillStyle = "black";
-    ctx.font = "12px Arial";
+    ctx.fillStyle = 'black';
+    ctx.font = '12px Arial';
     ctx.fillText(`Speed: ${this.speed}`, this.x, this.y + 24);
   }
 }

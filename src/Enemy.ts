@@ -1,5 +1,5 @@
-import { colorPalette } from "./color-palette";
-import { Player } from "./Player";
+import { colorPalette } from './color-palette';
+import { Player } from './Player';
 
 export class Enemy {
   x: number;
@@ -44,8 +44,8 @@ export class Enemy {
     context.fillStyle = this.color;
     context.fillRect(this.x, this.y, this.width, this.height);
 
-    context.fillStyle = "black";
-    context.font = "12px Arial";
+    context.fillStyle = 'black';
+    context.font = '12px Arial';
     context.fillText(`HP: ${this.HP.toString()}`, this.x, this.y + 12);
   }
 }

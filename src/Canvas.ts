@@ -2,23 +2,23 @@ export class Canvas {
   context: CanvasRenderingContext2D;
 
   constructor({ identifier }: { identifier: string }) {
-    const canvas = document.createElement("canvas");
-    if (!canvas.getContext("2d")) {
-      throw new Error("Could not get context");
+    const canvas = document.createElement('canvas');
+    if (!canvas.getContext('2d')) {
+      throw new Error('Could not get context');
     }
 
-    this.context = canvas.getContext("2d") || new CanvasRenderingContext2D();
+    this.context = canvas.getContext('2d') || new CanvasRenderingContext2D();
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    canvas.style.position = "absolute";
-    canvas.style.top = "0";
-    canvas.style.left = "0";
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
 
     document.body.appendChild(canvas);
 
-    window.addEventListener("resize", () => {
+    window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     });

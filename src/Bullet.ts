@@ -1,8 +1,8 @@
-import { colorPalette } from "./color-palette";
-import { Coordinates } from "./Coordinates";
-import { Enemy } from "./Enemy";
-import { Player } from "./Player";
-import { getWindowHeight, getWindowWidth } from "./window-dimensions";
+import { colorPalette } from './color-palette';
+import { Coordinates } from './Coordinates';
+import { Enemy } from './Enemy';
+import { Player } from './Player';
+import { getWindowHeight, getWindowWidth } from './window-dimensions';
 
 export class Bullet {
   x: number;

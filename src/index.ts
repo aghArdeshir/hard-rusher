@@ -1,17 +1,17 @@
-import { Bullet } from "./Bullet";
-import { Canvas } from "./Canvas";
-import { colorPalette } from "./color-palette";
-import { Enemy } from "./Enemy";
-import { Player } from "./Player";
-import { getWindowHeight, getWindowWidth } from "./window-dimensions";
+import { Bullet } from './Bullet';
+import { Canvas } from './Canvas';
+import { colorPalette } from './color-palette';
+import { Enemy } from './Enemy';
+import { Player } from './Player';
+import { getWindowHeight, getWindowWidth } from './window-dimensions';
 
-document.body.style.margin = "0";
-document.body.style.overflow = "hidden";
+document.body.style.margin = '0';
+document.body.style.overflow = 'hidden';
 document.body.style.backgroundColor = colorPalette.one;
 
-const playerCanvas = new Canvas({ identifier: "for-player" });
-const bulletsCanvas = new Canvas({ identifier: "for-bullets" });
-const enemiesCanvas = new Canvas({ identifier: "for-enemies" });
+const playerCanvas = new Canvas({ identifier: 'for-player' });
+const bulletsCanvas = new Canvas({ identifier: 'for-bullets' });
+const enemiesCanvas = new Canvas({ identifier: 'for-enemies' });
 
 const windowWidth = getWindowWidth();
 const windowHeight = getWindowHeight();
