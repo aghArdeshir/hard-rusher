@@ -10,6 +10,7 @@ export class Player {
   color = colorPalette.four;
   moving: DIRECTION | null = null;
   movingIntervalRef: number | null = null;
+  health = 100;
 
   constructor(x: number, y: number) {
     this.x = x;
@@ -43,7 +44,7 @@ export class Player {
     }
 
     if (!this.movingIntervalRef) {
-      this.movingIntervalRef = window.setInterval(this.move, 5);
+      this.movingIntervalRef = window.setInterval(this.move, 1);
     }
   };
 
@@ -70,5 +71,9 @@ export class Player {
   draw(ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
+
+    ctx.fillStyle = "black";
+    ctx.font = "12px Arial";
+    ctx.fillText(`HP: ${this.health}`, this.x, this.y + 12);
   }
 }
