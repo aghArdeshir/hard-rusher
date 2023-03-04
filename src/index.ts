@@ -1,6 +1,6 @@
-import { Canvas } from "./Canvas.mjs";
-import { colorPalette } from "./color-palette.mjs";
-import { player } from "./Player.mjs";
+import { Canvas } from "./Canvas";
+import { colorPalette } from "./color-palette";
+import { player } from "./Player";
 
 document.body.style.margin = "0";
 document.body.style.overflow = "hidden";

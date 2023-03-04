@@ -1,7 +1,15 @@
+import { Drawable } from "./Drawable";
+
 export class Canvas {
-  constructor({ identifier }) {
+  context: CanvasRenderingContext2D;
+
+  constructor({ identifier }: { identifier: string }) {
     const canvas = document.createElement("canvas");
-    this.context = canvas.getContext("2d");
+    if (!canvas.getContext("2d")) {
+      throw new Error("Could not get context");
+    }
+
+    this.context = canvas.getContext("2d") || new CanvasRenderingContext2D();
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -18,7 +26,7 @@ export class Canvas {
     }
   }
 
-  draw(subject) {
+  draw(subject: Drawable) {
     this.context.fillStyle = subject.color;
     this.context.fillRect(subject.x, subject.y, subject.width, subject.height);
   }

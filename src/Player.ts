@@ -1,4 +1,4 @@
-import { colorPalette } from "./color-palette.mjs";
+import { colorPalette } from "./color-palette";
 
 class Player {
   x = 100;
