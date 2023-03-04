@@ -47,6 +47,9 @@ requestAnimationFrame(function gameLoop() {
 
   bulletsCanvas.clear();
   bullets.forEach((bullet) => {
+    if (bullet.isOffScreen()) {
+      bullets.splice(bullets.indexOf(bullet), 1);
+    }
     bullet.draw(bulletsCanvas.context);
   });
 

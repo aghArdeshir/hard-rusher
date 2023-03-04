@@ -2,7 +2,7 @@ import { colorPalette } from "./color-palette";
 import { Coordinates } from "./Coordinates";
 import { Enemy } from "./Enemy";
 import { Player } from "./Player";
-import { getWindowWidth } from "./window-dimensions";
+import { getWindowHeight, getWindowWidth } from "./window-dimensions";
 
 export class Bullet {
   x: number;
@@ -63,6 +63,15 @@ export class Bullet {
       this.x += xVelocity;
       this.y += yVelocity;
     }, 1);
+  }
+
+  isOffScreen() {
+    return (
+      this.y < 0 ||
+      this.y > getWindowHeight() ||
+      this.x < 0 ||
+      this.x > getWindowWidth()
+    );
   }
 
   draw(context: CanvasRenderingContext2D) {
