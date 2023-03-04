@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "vite src"
+    "start": "vite src --open"
   },
   "repository": {
     "type": "git",
