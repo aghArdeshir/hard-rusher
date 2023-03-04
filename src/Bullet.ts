@@ -12,8 +12,8 @@ export class Bullet {
   color = colorPalette.three;
 
   constructor(player: Player, enemies: Enemy[]) {
-    this.x = player.x;
-    this.y = player.y;
+    this.x = player.x + player.width / 2 - this.width / 2;
+    this.y = player.y + player.height / 2 - this.height / 2;
 
     const target = this.findClosestEnemy(enemies);
 
@@ -28,7 +28,7 @@ export class Bullet {
       };
     }
 
-    return enemies.reduce((closestEnemy, enemy) => {
+    const targetEnemy = enemies.reduce((closestEnemy, enemy) => {
       if (closestEnemy === null) {
         return enemy;
       }
@@ -42,6 +42,11 @@ export class Bullet {
 
       return closestEnemy;
     });
+
+    return {
+      x: targetEnemy.x + targetEnemy.width / 2,
+      y: targetEnemy.y + targetEnemy.height / 2,
+    };
   }
 
   calculateDistance(target: Coordinates) {
