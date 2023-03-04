@@ -10,6 +10,7 @@ export class Bullet {
   width = 10;
   height = 10;
   color = colorPalette.three;
+  speed = 1;
 
   constructor(player: Player, enemies: Enemy[]) {
     this.x = player.x + player.width / 2 - this.width / 2;
@@ -65,8 +66,8 @@ export class Bullet {
     const yVelocity = yDistance / distance;
 
     setInterval(() => {
-      this.x += xVelocity;
-      this.y += yVelocity;
+      this.x += xVelocity * this.speed;
+      this.y += yVelocity * this.speed;
     }, 1);
   }
 
