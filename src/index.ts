@@ -29,6 +29,34 @@ const enemies = [
   new Enemy(100, windowHeight / 2, 50, 50, player),
 ];
 
+function spawnEnemies() {
+  const Coordinates = {
+    x: Math.random() * windowWidth,
+    y: Math.random() * windowHeight,
+  };
+
+  const distanceToPlayer = Math.sqrt(
+    (Coordinates.x - player.x) ** 2 + (Coordinates.y - player.y) ** 2
+  );
+
+  if (distanceToPlayer < 200) {
+    spawnEnemies();
+  }
+
+  const enemy = new Enemy(
+    Math.random() * windowWidth,
+    Math.random() * windowHeight,
+    50,
+    50,
+    player
+  );
+  enemies.push(enemy);
+}
+
+setInterval(() => {
+  spawnEnemies();
+}, 1000);
+
 const bullets: Bullet[] = [];
 
 setInterval(() => {
