@@ -33,6 +33,10 @@ class Game {
     setInterval(() => {
       this.spawnNewEnemy();
     }, 1000);
+
+    setInterval(() => {
+      this.checkForCollidingEnemies();
+    }, 1000);
   }
 
   spawnNewEnemy() {
@@ -95,11 +99,39 @@ class Game {
         this.player.y + this.player.height > bonus.y
       ) {
         this.bonuses.splice(this.bonuses.indexOf(bonus), 1);
-        this.player.health += 1;
         this.player.bulletSpeed = Number(
           (this.player.bulletSpeed + 0.01).toFixed(2)
         );
         this.player.fireRate = Number((this.player.fireRate + 0.01).toFixed(2));
+      }
+    });
+  }
+
+  checkForPlayerAndEnemyCollisions() {
+    this.enemies.forEach((enemy) => {
+      if (
+        this.player.x < enemy.x + enemy.width - 1 &&
+        this.player.x + this.player.width > enemy.x - 1 &&
+        this.player.y < enemy.y + enemy.height + 1 &&
+        this.player.y + this.player.height > enemy.y - 1
+      ) {
+        if (enemy.isCollidingWithPlayer) {
+          return;
+        }
+        enemy.isCollidingWithPlayer = true;
+        enemy.HP -= this.player.bodyDamage;
+        this.player.HP -= 1;
+      } else {
+        enemy.isCollidingWithPlayer = false;
+      }
+    });
+  }
+
+  checkForCollidingEnemies() {
+    this.enemies.forEach((enemy) => {
+      if (enemy.isCollidingWithPlayer) {
+        enemy.HP -= this.player.bodyDamage;
+        this.player.HP -= 1;
       }
     });
   }

@@ -65,6 +65,7 @@ requestAnimationFrame(function gameLoop() {
   game.checkForCollisions();
   game.checkForEnemyDeaths();
   game.checkForBonusPickups();
+  game.checkForPlayerAndEnemyCollisions();
 
   requestAnimationFrame(gameLoop);
 });

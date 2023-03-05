@@ -12,10 +12,11 @@ export class Player {
   color = colorPalette.four;
   moving: DIRECTION | null = null;
   movingIntervalRef: number | null = null;
-  health = 100;
+  HP = 100;
   speed = 1;
   bulletSpeed = 1;
   fireRate = 1;
+  bodyDamage = 1;
 
   constructor(x: number, y: number) {
     this.x = x;
@@ -77,7 +78,7 @@ export class Player {
 
     ctx.fillStyle = 'black';
     ctx.font = '10px Arial';
-    ctx.fillText(`HP: ${this.health}`, this.x, this.y + 12);
+    ctx.fillText(`HP: ${this.HP}`, this.x, this.y + 12);
 
     ctx.fillStyle = 'black';
     ctx.font = '10px Arial';

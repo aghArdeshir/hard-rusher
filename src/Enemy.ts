@@ -8,6 +8,8 @@ export class Enemy {
   height: number;
   color = colorPalette.five;
   HP = 1;
+  bodyDamage = 1;
+  isCollidingWithPlayer = false;
 
   constructor(
     x: number,
