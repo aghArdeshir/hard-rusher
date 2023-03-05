@@ -16,11 +16,9 @@ export class Player {
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
-    window.addEventListener('keydown', this.handleKeyDown);
-    window.addEventListener('keyup', this.handleKeyUp);
   }
 
-  handleKeyUp = (event: KeyboardEvent) => {
+  stop = () => {
     if (this.movingIntervalRef) {
       window.clearInterval(this.movingIntervalRef);
       this.movingIntervalRef = null;
@@ -28,22 +26,8 @@ export class Player {
     this.moving = null;
   };
 
-  handleKeyDown = (event: KeyboardEvent) => {
-    switch (event.key) {
-      case 'ArrowUp':
-        this.moving = 'UP';
-        break;
-      case 'ArrowDown':
-        this.moving = 'DOWN';
-        break;
-      case 'ArrowLeft':
-        this.moving = 'LEFT';
-        break;
-      case 'ArrowRight':
-        this.moving = 'RIGHT';
-        break;
-    }
-
+  setMoving = (direction: DIRECTION) => {
+    this.moving = direction;
     if (!this.movingIntervalRef) {
       this.movingIntervalRef = window.setInterval(this.move, 1);
     }

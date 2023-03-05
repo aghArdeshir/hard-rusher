@@ -18,6 +18,29 @@ const windowHeight = getWindowHeight();
 
 export const player = new Player(windowWidth / 2, windowHeight / 2);
 
+const handleKeyUp = (event: KeyboardEvent) => {
+  player.stop();
+};
+
+const handleKeyDown = (event: KeyboardEvent) => {
+  switch (event.key) {
+    case 'ArrowUp':
+      player.setMoving('UP');
+      break;
+    case 'ArrowDown':
+      player.setMoving('DOWN');
+      break;
+    case 'ArrowLeft':
+      player.setMoving('LEFT');
+      break;
+    case 'ArrowRight':
+      player.setMoving('RIGHT');
+      break;
+  }
+};
+window.addEventListener('keydown', handleKeyDown);
+window.addEventListener('keyup', handleKeyUp);
+
 const enemies = [
   new Enemy(100, 100, 50, 50, player),
   new Enemy(100, windowHeight - 100, 50, 50, player),
