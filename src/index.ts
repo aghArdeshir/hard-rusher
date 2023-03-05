@@ -84,9 +84,9 @@ setInterval(() => {
 const bullets: Bullet[] = [];
 
 setInterval(() => {
-  const bullet = new Bullet(player, enemies);
+  const bullet = new Bullet(player, enemies, player.bulletSpeed);
   bullets.push(bullet);
-}, 1000);
+}, 1000 / player.fireRate);
 
 function checkForCollisions() {
   enemies.forEach((enemy) => {
@@ -125,6 +125,8 @@ function checkForBonusPickups() {
     ) {
       bonuses.splice(bonuses.indexOf(bonus), 1);
       player.health += 1;
+      player.bulletSpeed = Number((player.bulletSpeed + 0.01).toFixed(2));
+      player.fireRate = Number((player.fireRate + 0.01).toFixed(2));
     }
   });
 }

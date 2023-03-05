@@ -12,6 +12,8 @@ export class Player {
   movingIntervalRef: number | null = null;
   health = 100;
   speed = 1;
+  bulletSpeed = 1;
+  fireRate = 1;
 
   constructor(x: number, y: number) {
     this.x = x;
@@ -58,11 +60,19 @@ export class Player {
     ctx.fillRect(this.x, this.y, this.width, this.height);
 
     ctx.fillStyle = 'black';
-    ctx.font = '12px Arial';
+    ctx.font = '10px Arial';
     ctx.fillText(`HP: ${this.health}`, this.x, this.y + 12);
 
     ctx.fillStyle = 'black';
-    ctx.font = '12px Arial';
+    ctx.font = '10px Arial';
     ctx.fillText(`Speed: ${this.speed}`, this.x, this.y + 24);
+
+    ctx.fillStyle = 'black';
+    ctx.font = '10px Arial';
+    ctx.fillText(`B.Speed: ${this.bulletSpeed}`, this.x, this.y + 36);
+
+    ctx.fillStyle = 'black';
+    ctx.font = '10px Arial';
+    ctx.fillText(`F.Rate: ${this.fireRate}`, this.x, this.y + 48);
   }
 }

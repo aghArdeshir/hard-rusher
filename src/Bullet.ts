@@ -10,11 +10,12 @@ export class Bullet {
   width = 10;
   height = 10;
   color = colorPalette.three;
-  speed = 1;
+  speed: number;
 
-  constructor(player: Player, enemies: Enemy[]) {
+  constructor(player: Player, enemies: Enemy[], speed: number) {
     this.x = player.x + player.width / 2 - this.width / 2;
     this.y = player.y + player.height / 2 - this.height / 2;
+    this.speed = speed;
 
     const target = this.findClosestEnemy(enemies, player);
 
