@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "vitest",
     "start": "vite src --open"
   },
   "repository": {
@@ -18,7 +19,6 @@
   },
   "homepage": "https://github.com/aghArdeshir/hard-rusher#readme",
   "devDependencies": {
-    "@types/jest": "^29.4.0",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
@@ -26,9 +26,9 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
-    "jest": "^29.4.3",
     "prettier": "^2.8.4",
     "typescript": "^4.9.5",
-    "vite": "^4.1.4"
+    "vite": "^4.1.4",
+    "vitest": "^0.29.2"
   }
 }
