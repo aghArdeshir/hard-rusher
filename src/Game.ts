@@ -31,11 +31,11 @@ class Game {
 
   initializeGame() {
     setInterval(() => {
-      this.spawnEnemies();
+      this.spawnNewEnemy();
     }, 1000);
   }
 
-  spawnEnemies() {
+  spawnNewEnemy() {
     const Coordinates = {
       x: Math.random() * windowWidth,
       y: Math.random() * windowHeight,
@@ -47,7 +47,8 @@ class Game {
     );
 
     if (distanceToPlayer < 200) {
-      this.spawnEnemies();
+      this.spawnNewEnemy();
+      return;
     }
 
     const enemy = new Enemy(
