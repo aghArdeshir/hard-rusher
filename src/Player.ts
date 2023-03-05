@@ -1,4 +1,6 @@
+import { Bullet } from './Bullet';
 import { colorPalette } from './color-palette';
+import { game } from './Game';
 
 type DIRECTION = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT';
 
@@ -18,7 +20,15 @@ export class Player {
   constructor(x: number, y: number) {
     this.x = x;
     this.y = y;
+    this.startShootoing();
   }
+
+  startShootoing = () => {
+    setInterval(() => {
+      const bullet = new Bullet(this, game.enemies, this.bulletSpeed);
+      game.bullets.push(bullet);
+    }, 1000 / this.fireRate);
+  };
 
   stop = () => {
     if (this.movingIntervalRef) {
