@@ -24,9 +24,15 @@ export class Player {
   }
 
   startShootoing = () => {
-    setInterval(() => {
+    let oldFireRate = this.fireRate;
+    const intervalRef = setInterval(() => {
       const bullet = new Bullet(this, game.enemies, this.bulletSpeed);
       game.bullets.push(bullet);
+
+      if (oldFireRate !== this.fireRate) {
+        clearInterval(intervalRef);
+        this.startShootoing();
+      }
     }, 1000 / this.fireRate);
   };
 
