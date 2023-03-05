@@ -30,10 +30,6 @@ export class Bullet {
     }
 
     const targetEnemy = enemies.reduce((closestEnemy, enemy) => {
-      if (closestEnemy === null) {
-        return enemy;
-      }
-
       const distanceToClosestEnemy = this.calculateDistance(closestEnemy);
       const distanceToEnemy = this.calculateDistance(enemy);
 
