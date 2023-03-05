@@ -3,9 +3,6 @@ export class Canvas {
 
   constructor({ identifier }: { identifier: string }) {
     const canvas = document.createElement('canvas');
-    if (!canvas.getContext('2d')) {
-      throw new Error('Could not get context');
-    }
 
     this.context = canvas.getContext('2d') || new CanvasRenderingContext2D();
 
