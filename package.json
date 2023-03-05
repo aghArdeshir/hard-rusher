@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest",
+    "test": "vitest --coverage",
     "start": "vite src --open"
   },
   "repository": {
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/aghArdeshir/hard-rusher#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@vitest/coverage-c8": "^0.29.2",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-config-standard-with-typescript": "^34.0.0",
