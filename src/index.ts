@@ -15,15 +15,39 @@ const playerCanvas = new Canvas({ identifier: 'for-player' });
 const bulletsCanvas = new Canvas({ identifier: 'for-bullets' });
 const enemiesCanvas = new Canvas({ identifier: 'for-enemies' });
 
-const windowWidth = getWindowWidth();
-const windowHeight = getWindowHeight();
+const keysPressed: string[] = [];
 
 const handleKeyUp = (event: KeyboardEvent) => {
-  game.player.stop();
+  const lastKeyIndex = keysPressed.findLastIndex((key) => key === event.key);
+  if (lastKeyIndex !== -1) {
+    keysPressed.splice(lastKeyIndex, 1);
+  }
+  setPlayerMovingDirection();
 };
 
 const handleKeyDown = (event: KeyboardEvent) => {
+  if (keysPressed.includes(event.key)) {
+    return;
+  }
+
   switch (event.key) {
+    case 'ArrowUp':
+    case 'ArrowDown':
+    case 'ArrowLeft':
+    case 'ArrowRight':
+      keysPressed.push(event.key);
+      setPlayerMovingDirection();
+  }
+};
+
+const setPlayerMovingDirection = () => {
+  if (keysPressed.length === 0) {
+    game.player.stopMoving();
+    return;
+  }
+
+  const lastKey = keysPressed.at(-1);
+  switch (lastKey) {
     case 'ArrowUp':
       game.player.setMoving('UP');
       break;
@@ -38,6 +62,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
       break;
   }
 };
+
 window.addEventListener('keydown', handleKeyDown);
 window.addEventListener('keyup', handleKeyUp);
 

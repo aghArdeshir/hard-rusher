@@ -37,7 +37,7 @@ export class Player {
     }, 1000 / this.fireRate);
   };
 
-  stop = () => {
+  stopMoving = () => {
     if (this.movingIntervalRef) {
       window.clearInterval(this.movingIntervalRef);
       this.movingIntervalRef = null;
