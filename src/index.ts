@@ -1,3 +1,4 @@
+import { Bonus } from './Bonus';
 import { Bullet } from './Bullet';
 import { Canvas } from './Canvas';
 import { colorPalette } from './color-palette';
@@ -103,10 +104,27 @@ function checkForCollisions() {
   });
 }
 
+const bonuses: Bonus[] = [];
+
 function checkForEnemyDeaths() {
   enemies.forEach((enemy) => {
     if (enemy.HP <= 0) {
       enemies.splice(enemies.indexOf(enemy), 1);
+      bonuses.push(new Bonus(1, enemy));
+    }
+  });
+}
+
+function checkForBonusPickups() {
+  bonuses.forEach((bonus) => {
+    if (
+      player.x < bonus.x + bonus.width &&
+      player.x + player.width > bonus.x &&
+      player.y < bonus.y + bonus.height &&
+      player.y + player.height > bonus.y
+    ) {
+      bonuses.splice(bonuses.indexOf(bonus), 1);
+      player.health += 1;
     }
   });
 }
@@ -128,8 +146,13 @@ requestAnimationFrame(function gameLoop() {
     bullet.draw(bulletsCanvas.context);
   });
 
+  bonuses.forEach((bonus) => {
+    bonus.draw(bulletsCanvas.context);
+  });
+
   checkForCollisions();
   checkForEnemyDeaths();
+  checkForBonusPickups();
 
   requestAnimationFrame(gameLoop);
 });
